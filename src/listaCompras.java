@@ -12,7 +12,7 @@ public class listaCompras {
         System.out.println("\nLISTA DE COMPRAS");
         String option;
 
-        //Hago un do-while para mostrar las opciones siempre y cuando el usuario no ingrese el 3 (salir)
+        //Hago un do-while para mostrar las opciones siempre y cuando el usuario no ingrese el 4 (salir)
         do {
             System.out.println(".....................\n");
             System.out.println("1. Agregar un articulo");
@@ -24,7 +24,7 @@ public class listaCompras {
 
             option = sc.nextLine(); //El usuario ingresa la opocion 
 
-            //Con un switch se evalua lo que el usuario ingrese
+            //Con un switch se evalua lo que el usuario ingresa
             switch(option) {
                 case "1":
                     System.out.print("Ingrese un articulo a la lista: ");
@@ -34,29 +34,29 @@ public class listaCompras {
                 break;
                 case "2":
                     System.out.println("\nLista de compras: ");
-                    if (listaCompras.isEmpty()) { //si la lista esta vacia se muestra el sig mensaje
+                    if (listaCompras.isEmpty()) { //si la lista esta vacia se muestra el siguiente mensaje
                         System.out.println("\nNo tiene nada en la lista");
                     } else {
-                        for (int i = 0; i < listaCompras.size(); i++) { //con un for se recorre el array
-                            System.out.println((i+1) + ". " + listaCompras.get(i)); // se imprimen todos los elementos
+                        for (int i = 0; i < listaCompras.size(); i++) { //con un bucle for se recorre el array
+                            System.out.println((i+1) + ". " + listaCompras.get(i)); // se imprimen todos los elementos del array (se le suma 1 al indice para que inicie con el numero 1 y no en 0)
                         }
                     }
                 break;
                 case "3":
-                    //if de validacion
+                    //if que valida que el usuario ingrese una opcion correcta
                     if (listaCompras.isEmpty()) {
                         System.out.println("\nNo hay articulos para editar"); //Se muestra este mensaje en caso de que el array este vacio
                     } else {
                         System.out.println("\nIngrese el numero del articulo que quiere editar: ");
-                        int index = sc.nextInt();
-                        sc.nextLine(); //vaciar el bufer de entrada
-                        //si el array tiene elementos se evalua con otro if si se ingreso un numero de articulo valido
+                        int index = sc.nextInt(); // Lee el numero ingresado por el usuario y lo almacena en la variable index
+                        sc.nextLine(); //vaciar el bufer de entrada de scanner
+                        //Si el array tiene elementos, se evalua con otro if si se ingreso un numero de articulo valido
                         if (index < 1 || index > listaCompras.size()) {
                             System.out.println("Ingrese el numero de un articulo valido");
                         } else {
                             System.out.println("Ingrese el nuevo nombre del articulo: ");
-                            String articuloNuevo = sc.nextLine(); //Se almacena en la variable el nuevo nombre ingresado por el usuario
-                            listaCompras.set(index - 1, articuloNuevo); // el metodo set actualiza el elemento ubicado en el indice indicado por el usuario (debido a que inician en 0, se le resta 1 para que coincida con el que ingreso el usuario)
+                            String articuloNuevo = sc.nextLine(); //Se almacena en una variable el nuevo nombre ingresado por el usuario
+                            listaCompras.set(index - 1, articuloNuevo); // El metodo .set() actualiza el elemento ubicado en el indice indicado por el usuario (debido a que inician en 0, se le resta 1 para que coincida con el que ingreso el usuario)
                             System.out.println("El articulo fue editado con exito");
                         }
                     }
@@ -70,7 +70,7 @@ public class listaCompras {
 
             }
 
-        } while(!option.equals("4"));  //el while se va a ejecutar siempre y cuando la opcion no se 3
+        } while(!option.equals("4"));  //El while se va a ejecutar siempre y cuando la opcion no sea 4
 
         sc.close();
     }
